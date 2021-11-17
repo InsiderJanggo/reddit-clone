@@ -92,7 +92,7 @@ export default function Navbar({ session }) {
                             Action
                         </MenuButton>
                         <MenuList>
-                            <MenuItem>Create Subreddit</MenuItem>
+                            <MenuItem onClick={() => router.push('/subreddit/create')}>Create Subreddit</MenuItem>
                             <MenuItem>Add Post</MenuItem>
                         </MenuList>
                     </Menu>
