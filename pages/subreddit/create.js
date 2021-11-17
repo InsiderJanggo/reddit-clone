@@ -12,8 +12,7 @@ export default function SubredditFormPage({ session }) {
     const [data, setData] = useState({
         name: '',
         description: '',
-        image: '',
-        parther: false
+        image: ''
     })
     
     /**
@@ -37,11 +36,10 @@ export default function SubredditFormPage({ session }) {
                 name: data.name,
                 description: data.description,
                 image: data.image,
-                parther: data.parther,
-                userId: session.user.userId
+                userId: `${session.userId}`
             }
 
-            await fetch(`${process.env.BASE_URL}/subreddit/create`, {
+            await fetch(`${process.env.BASE_URL}/api/subreddit/create`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)
@@ -106,6 +104,7 @@ export default function SubredditFormPage({ session }) {
                                 <Text fontWeight="bold" id='subreddit-name-preview'>
                                     {data.name}
                                 </Text>
+                                <Text>UserID: {session.userId}</Text>
                                 <ReactMarkdown>{data.description}</ReactMarkdown>
                             </div>
                     </Box>
