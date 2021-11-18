@@ -15,4 +15,4 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 Here is the [translation project](https://app.i18nexus.com/projects/mVCGpPChpaP3rKv8K5JDtp/strings)
 
 ## Website Preview
-![website example]()
+![website example](https://github.com/InsiderJanggo/reddit-clone/blob/main/public/example.png)
