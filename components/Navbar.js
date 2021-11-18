@@ -22,10 +22,7 @@ import { useRouter } from 'next/router';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, AddIcon } from '@chakra-ui/icons';
 import { signIn, signOut } from 'next-auth/client';
 
-const Links = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' }
-]
+import { useTranslation } from "next-i18next"
 
 /**
  * @param {Object} param
@@ -51,6 +48,12 @@ export default function Navbar({ session }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { colorMode, toggleColorMode } = useColorMode()
     const router = useRouter()
+    const { t } = useTranslation()
+
+    const Links = [
+        { name: t('navbar:home_link'), href: '/' },
+        { name: 'About', href: '/about' }
+    ]
 
     return(
         <Box bg={useColorModeValue('gray.100', 'gray.900')} px={4}>
