@@ -21,7 +21,6 @@ import {
 import { useRouter } from 'next/router';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, AddIcon } from '@chakra-ui/icons';
 import { signIn, signOut } from 'next-auth/client';
-
 import { useTranslation } from "next-i18next"
 
 /**
@@ -52,7 +51,7 @@ export default function Navbar({ session }) {
 
     const Links = [
         { name: t('navbar:home_link'), href: '/' },
-        { name: 'About', href: '/about' }
+        { name: t('navbar:about_link'), href: '/about' }
     ]
 
     return(
@@ -126,8 +125,8 @@ export default function Navbar({ session }) {
                             </Center>
                             <br />
                         <MenuDivider />
-                        <MenuItem onClick={() => router.push('/me')}>Your Profile</MenuItem>
-                        <MenuItem onClick={() => signOut()}>Logout</MenuItem>
+                        <MenuItem onClick={() => router.push('/me')}>{t('navbar:profile_link')}</MenuItem>
+                        <MenuItem onClick={() => signOut()}>{t('navbar:logout_link')}</MenuItem>
                       </MenuList>
                     </Menu>
                  

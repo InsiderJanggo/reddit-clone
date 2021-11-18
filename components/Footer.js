@@ -6,9 +6,16 @@ import {
     Text,
     useColorModeValue,
     VisuallyHidden,
+    Menu,
+    MenuButton,
+    MenuList,
+    MenuItem,
+    MenuDivider
 } from '@chakra-ui/react';
-import { FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+import { FaInstagram, FaTwitter, FaYoutube, FaGlobe } from 'react-icons/fa';
 import { ReactNode } from 'react';
+import Router from 'next/router'
+import ReactCountryFlag from "react-country-flag"
 
 const Socials = [
     { label: 'Instagram', icon: <FaInstagram />, href: '#' }
@@ -56,13 +63,58 @@ export default function Footer() {
           spacing={4}
           justify={{ base: 'center', md: 'space-between' }}
           align={{ base: 'center', md: 'center' }}>
-          <Text>© 2020 Chakra Templates. All rights reserved</Text>
+          <Text>© 2021 RealPenguin(Wisly ong). All rights reserved</Text>
           <Stack direction={'row'} spacing={6}>
             {Socials.map((data) => (
                 <SocialButton key={data.label} label={data.label} href={data.href}>
                     {data.icon}
                 </SocialButton>
             ))}
+            <Menu>
+                <MenuButton>
+                    <SocialButton label={'earth'}>
+                        <FaGlobe />
+                    </SocialButton>
+                </MenuButton>
+                <MenuList>
+                        <MenuItem onClick={() => Router.push(`en`) }> 
+                            <Box mr={2}>
+                                <ReactCountryFlag 
+                                    countryCode="US"
+                                    svg
+                                    cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/1x1/"
+                                    cdnSuffix="svg"
+                                    title="US" 
+                                />
+                            </Box>
+                            English
+                        </MenuItem>
+                        <MenuItem onClick={() => Router.push(`id`) }>
+                            <Box mr={2}>
+                                <ReactCountryFlag 
+                                    countryCode="ID"
+                                    svg
+                                    cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/1x1/"
+                                    cdnSuffix="svg"
+                                    title="ID"
+                                />  
+                            </Box>
+                            Bahasa Indonesia
+                        </MenuItem>
+                        <MenuItem onClick={() => Router.push(`ja`) }>
+                            <Box mr={2}>
+                                <ReactCountryFlag 
+                                    countryCode="JP"
+                                    svg
+                                    cdnUrl="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.3/flags/1x1/"
+                                    cdnSuffix="svg"
+                                    title="JP"
+                                />  
+                            </Box>
+                            日本語
+                        </MenuItem>
+                    </MenuList>
+            </Menu>
           </Stack>
         </Container>
       </Box>
