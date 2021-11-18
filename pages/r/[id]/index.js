@@ -1,6 +1,10 @@
 import Head from 'next/head'
 import { getSession } from 'next-auth/client'
 import { useState } from 'react'
+import { Box, Center } from '@chakra-ui/react'
+import Layout from '@/components/Layout'
+import PostForm from '@/components/PostForm'
+import PostCard from '@/components/PostCard'
 
 export default function SubredditPage({ session, subreddit }) {
     return (
@@ -8,6 +12,22 @@ export default function SubredditPage({ session, subreddit }) {
             <Head>
                 <title>{subreddit.name} - Reddit</title>
             </Head>
+            <Layout>
+              <Center py={6}>
+                    <Box>
+                        {session ? (
+                            <PostForm subreddit={subreddit} session={session} />
+                        ): (
+                            null
+                        )}
+                    </Box>
+              </Center>
+                    <Box px={6} py={6}>
+                        {subreddit.posts.map((post) => (
+                            <PostCard post={post} key={post.id} />
+                        ))}
+                    </Box>
+            </Layout>
         </div>
     )
 }
