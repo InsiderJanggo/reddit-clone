@@ -76,6 +76,7 @@ export default function PostForm({
                     />
                      <input
                         disabled={!data.value}
+                        style={{ cursor: data.value ? 'pointer' : 'not-allowed' }}
                         type="submit"
                         value="Post"
                     />

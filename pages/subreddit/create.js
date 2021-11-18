@@ -90,6 +90,7 @@ export default function SubredditFormPage({ session }) {
                                 <input
                                     disabled={!data.name || !data.description || !data.image}
                                     type="submit"
+                                    style={{ cursor: data.value ? 'pointer' : 'not-allowed' }}
                                     value="Create"
                                 />
                                 <a className="back" style={{ cursor: 'pointer' }} href="#" onClick={() => Router.push('/')}>

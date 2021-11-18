@@ -30,7 +30,7 @@ const Links = [
  * @param {Object} param
  * @param {ReactNode} param.children
  */
-export function Navlink({ children, href }) {
+export function Navlink({ href, children }) {
     return(
         <Link
         px={2}
@@ -70,7 +70,7 @@ export default function Navbar({ session }) {
                         spacing={4}
                         display={{ base: 'none', md: 'flex' }}>
                         {Links.map((link) => (
-                            <Navlink key={link.name}>{link.name}</Navlink>
+                            <Navlink href={link.href} key={link.name}>{link.name}</Navlink>
                         ))}
                         </HStack>
                 </HStack>
@@ -151,7 +151,7 @@ export default function Navbar({ session }) {
                 <Box pb={4} display={{ md: 'none' }}>
                     <Stack as={'nav'} spacing={4}>
                     {Links.map((link) => (
-                        <Navlink key={link.name}>{link.name}</Navlink>
+                        <Navlink href={link.href} key={link.name} >{link.name}</Navlink>
                     ))}
                     </Stack>
                 </Box>
