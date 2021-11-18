@@ -6,9 +6,12 @@ import Layout from "@/components/Layout";
 import { Box, Center, Text, Image } from "@chakra-ui/react";
 import { useState } from "react";
 import ReactMarkdown from 'react-markdown';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+import { useTranslation } from 'next-i18next';
 
 export default function SubredditFormPage({ session }) {
     if(!session) return <span>Not Allowed</span>
+    const { t } = useTranslation()
     const [data, setData] = useState({
         name: '',
         description: '',
@@ -53,13 +56,13 @@ export default function SubredditFormPage({ session }) {
     return (
         <div>
             <Head>
-                <title>Create Subreddit - Reddit</title>
+                <title>{t('subreddit_create:page_title')}</title>
             </Head>
             <Layout>
                 <Center py={6}>
                     <Box w={500} h={500} mb='18rem'>
                         <form onSubmit={handleSubmit}>
-                                <h1>Create New Subreddit</h1>
+                                <h1>{t('subreddit_create:form_title')}</h1>
                                 <input
                                     autoFocus
                                     onChange={handleChange}
@@ -149,7 +152,8 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-            session: await getSession(context)
+            session: await getSession(context),
+            ...(await serverSideTranslations(context.locale, ['navbar', 'subreddit_create'])),
         }
     }
 }
