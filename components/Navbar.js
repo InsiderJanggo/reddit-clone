@@ -23,7 +23,8 @@ import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, AddIcon } from '@chakra-ui
 import { signIn, signOut } from 'next-auth/client';
 
 const Links = [
-    { name: 'Home', href: '/' }
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' }
 ]
 
 /**

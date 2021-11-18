@@ -2,6 +2,7 @@ import Head from 'next/head'
 import { getSession } from "next-auth/client"
 import PostCard from '@/components/PostCard'
 import Layout from '@/components/Layout'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export default function Home({ posts }) {
   return (
@@ -29,7 +30,8 @@ export async function getServerSideProps(context) {
     return {
         props: {
            posts,
-           session: await getSession(context)
+           session: await getSession(context),
+           ...(await serverSideTranslations(locale, ['home'])),
         }
     }
 }
