@@ -11,6 +11,7 @@ export default function PostForm({
     const [data, setData] = useState({
         title: '',
         value: '',
+        embed: '',
         error: ''
     });
 
@@ -42,6 +43,7 @@ export default function PostForm({
                 title: data.title,
                 content: data.value,
                 userId: session.userId,
+                embed: data.embed,
                 subredditId: subreddit.id
             }
             await fetch(`http://localhost:3000/api/post/add`, {
@@ -77,8 +79,16 @@ export default function PostForm({
                         value={data.value}
                         required
                     />
+                    <input
+                        autoFocus
+                        onChange={handleChange}
+                        placeholder="Post Embed(Not Required)"
+                        name="embed"
+                        type="url"
+                        value={data.embed}
+                    />
                      <input
-                        disabled={!data.value}
+                        disabled={!data.value | !data.title}
                         style={{ cursor: data.value ? 'pointer' : 'not-allowed' }}
                         type="submit"
                         value={t('post_form:submit_input')}

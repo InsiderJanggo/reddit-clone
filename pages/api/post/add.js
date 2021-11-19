@@ -10,10 +10,11 @@ export default async function handler(req, res) {
             title,
             content,
             subredditId,
-            userId
+            userId,
+            embed
         } = req.body
 
-        const post = await addPost(userId, subredditId, title, content)
+        const post = await addPost(userId, subredditId, title, content, embed)
 
         res.json(post)
    }

@@ -10,9 +10,11 @@ import {
     Flex,
     AvatarBadge
 } from '@chakra-ui/react';
+import ReactMarkdown from 'react-markdown';
 import { useRouter } from 'next/router';
 import { useOnline } from 'rooks';
 import { BiUpArrow, BiDownArrow } from 'react-icons/bi'
+import Youtube from './Embed/Youtube';
 
 export default function PostCard({ post, locale }) {
     const router = useRouter()
@@ -60,7 +62,10 @@ export default function PostCard({ post, locale }) {
                             {post.title}
                         </Heading>
                         <Text color={'gray.500'}>
-                            {post.content}
+                            <ReactMarkdown>{post.content}</ReactMarkdown>
+                            {post.embed && (
+                                <Youtube video={post.embed} />
+                            )}
                         </Text>
                     </Stack>
                     <Stack mt={6} direction={'row'} spacing={4} align={'center'}>

@@ -69,6 +69,7 @@ model Post {
   user User @relation(fields: [userId], references: [id])
   title String @unique
   content String?
+  embed String?
   upvoted Int @default(0)
   downvoted Int @default(0)
   createdAt DateTime @default(now())
