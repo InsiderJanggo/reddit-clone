@@ -13,13 +13,11 @@ import {
     MenuDivider
 } from '@chakra-ui/react';
 import { FaInstagram, FaTwitter, FaYoutube, FaGlobe } from 'react-icons/fa';
+import { BiSupport } from 'react-icons/bi'
 import { ReactNode } from 'react';
 import Router from 'next/router'
 import ReactCountryFlag from "react-country-flag"
 
-const Socials = [
-    { label: 'Instagram', icon: <FaInstagram />, href: '#' }
-]
 
 /**
  * @param {Object} param
@@ -51,6 +49,11 @@ export function SocialButton({ children, label, href }) {
 }
 
 export default function Footer() {
+    const Socials = [
+        { label: 'Instagram', icon: <FaInstagram />, href: '#' },
+        { label: 'Support', icon: <BiSupport />, href: '#' }
+    ]
+
     return(
         <Box
         bg={useColorModeValue('gray.50', 'gray.900')}
