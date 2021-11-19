@@ -97,8 +97,8 @@ export default function Navbar({ session }) {
                             {t('navbar:action_link')}
                         </MenuButton>
                         <MenuList>
-                            <MenuItem onClick={() => router.push('/subreddit/create')}>Create Subreddit</MenuItem>
-                            <MenuItem>Add Post</MenuItem>
+                            <MenuItem onClick={() => router.push('/subreddit/create')}>{t('navbar:action_create_link')}</MenuItem>
+                            <MenuItem>{t('navbar:action_post_link')}</MenuItem>
                         </MenuList>
                     </Menu>
                     <Menu>
