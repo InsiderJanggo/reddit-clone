@@ -2,6 +2,7 @@ import {
     useState
 } from 'react'
 import Router from 'next/router';
+import { useTranslation } from 'next-i18next';
 
 export default function PostForm({
     subreddit,
@@ -12,6 +13,8 @@ export default function PostForm({
         value: '',
         error: ''
     });
+
+    const { t } = useTranslation()
 
     /**
      * @param {import('react').ChangeEvent<HTMLInputElement>} e 
@@ -55,7 +58,7 @@ export default function PostForm({
     return(
        <div id="post-form">
             <form onSubmit={submit}>
-                <h1>Create New Post At {subreddit.name}</h1>
+                <h1>{t('post_form:form_title')} {subreddit.name}</h1>
                     <input
                         autoFocus
                         onChange={handleChange}
@@ -78,7 +81,7 @@ export default function PostForm({
                         disabled={!data.value}
                         style={{ cursor: data.value ? 'pointer' : 'not-allowed' }}
                         type="submit"
-                        value="Post"
+                        value={t('post_form:submit_input')}
                     />
             </form>
             <style jsx>{`

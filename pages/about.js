@@ -5,7 +5,7 @@ export default function AboutPage() {
     return (
         <div>
             <Head>
-                <title>Create Next App</title>
+                <title>About - Reddit</title>
             </Head>
             <Layout>
                 

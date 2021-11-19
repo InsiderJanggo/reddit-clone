@@ -39,10 +39,10 @@ export default function SubredditFormPage({ session }) {
                 name: data.name,
                 description: data.description,
                 image: data.image,
-                userId: `${session.userId}`
+                userId: session.userId
             }
 
-            await fetch(`${process.env.BASE_URL}/api/subreddit/create`, {
+            await fetch(`http://localhost:3000/api/subreddit/create`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body)

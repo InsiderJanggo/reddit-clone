@@ -4,13 +4,14 @@ import { useState } from 'react'
 import { Box, Center } from '@chakra-ui/react'
 import Layout from '@/components/Layout'
 import PostForm from '@/components/PostForm'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PostCard from '@/components/PostCard'
 
 export default function SubredditPage({ session, subreddit }) {
     return (
         <div>
             <Head>
-                <title>{subreddit.name} - Reddit</title>
+                <title>r/{subreddit.name} - Reddit</title>
             </Head>
             <Layout>
               <Center py={6}>
@@ -43,7 +44,8 @@ export async function getServerSideProps(context) {
     return {
         props: {
             session: await getSession(context),
-            subreddit
+            subreddit,
+            ...(await serverSideTranslations(context.locale, ['navbar', 'post_form'])),
         }
     }
 }
