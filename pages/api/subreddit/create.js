@@ -14,8 +14,6 @@ export default async function handler(req, res) {
             parther
         } = req.body
 
-        if(!parther) parther = false;
-
         const subreddit = await createSubReddit(name, image, parther, description, userId)
 
         res.json(subreddit)

@@ -39,6 +39,7 @@ export default function SubredditFormPage({ session }) {
                 name: data.name,
                 description: data.description,
                 image: data.image,
+                parther: false,
                 userId: session.userId
             }
 

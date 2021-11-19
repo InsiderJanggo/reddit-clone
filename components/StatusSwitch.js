@@ -3,16 +3,19 @@ import {
     FormLabel,
     Switch
 } from '@chakra-ui/react'
+import { useState } from 'react';
 import { useOnline } from 'rooks'
 
 export default function StatusSwitch() {
-    const online = useOnline();
+    const isonline = useOnline();
+    const [online, setOnline] = useState(isonline)
+
     return(
         <FormControl>
             <FormLabel htmlFor="status-checked" mb="0">
-                {online ? "Online" : "Offline"}
+                {isonline ? "Online" : "Offline"}
             </FormLabel>
-            <Switch id="status-checked" size="sm" isChecked/>
+            <Switch onChange={() => setOnline(!isonline)} id="status-checked" size="sm" isChecked/>
         </FormControl>
     )
 }

@@ -38,7 +38,9 @@ export default function SubredditPage({ session, subreddit, locale }) {
 * @returns
 */
 export async function getServerSideProps(context) {
-    const res = await fetch(`${process.env.BASE_URL}/api/subreddit/${context.params.id}`)
+    const res = await fetch(`${process.env.BASE_URL}/api/subreddit/${context.params.id}`, {
+        method: 'GET'
+    })
     const subreddit = await res.json()
     const locale = context.locale
 

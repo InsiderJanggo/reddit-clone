@@ -94,7 +94,7 @@ export default function Navbar({ session }) {
                         size={'sm'}
                         mr={4}
                         leftIcon={<AddIcon />}>
-                            Action
+                            {t('navbar:action_link')}
                         </MenuButton>
                         <MenuList>
                             <MenuItem onClick={() => router.push('/subreddit/create')}>Create Subreddit</MenuItem>

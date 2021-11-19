@@ -17,6 +17,7 @@
     "@emotion/styled": "^11.6.0",
     "@next-auth/prisma-adapter": "^0.4.4-canary.81",
     "@prisma/client": "^3.4.2",
+    "canvas-constructor": "^5.0.1",
     "framer-motion": "^4.1.17",
     "fs": "0.0.1-security",
     "i18next": "^21.5.2",

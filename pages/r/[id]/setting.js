@@ -19,7 +19,9 @@ export default function SubredditSettingPage({ session, subreddit }) {
 * @returns
 */
 export async function getServerSideProps(context) {
-    const res = await fetch(`${process.env.BASE_URL}/api/subreddit/${context.params.id}`)
+    const res = await fetch(`${process.env.BASE_URL}/api/subreddit/${context.params.id}`, {
+        method: 'GET'
+    })
     const subreddit = await res.json()
 
     return {
