@@ -7,7 +7,7 @@ import PostForm from '@/components/PostForm'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import PostCard from '@/components/PostCard'
 
-export default function SubredditPage({ session, subreddit }) {
+export default function SubredditPage({ session, subreddit, locale }) {
     return (
         <div>
             <Head>
@@ -25,7 +25,7 @@ export default function SubredditPage({ session, subreddit }) {
               </Center>
                     <Box px={6} py={6}>
                         {subreddit.posts.map((post) => (
-                            <PostCard post={post} key={post.id} />
+                            <PostCard locale={locale} post={post} key={post.id} />
                         ))}
                     </Box>
             </Layout>
@@ -40,12 +40,14 @@ export default function SubredditPage({ session, subreddit }) {
 export async function getServerSideProps(context) {
     const res = await fetch(`${process.env.BASE_URL}/api/subreddit/${context.params.id}`)
     const subreddit = await res.json()
+    const locale = context.locale
 
     return {
         props: {
             session: await getSession(context),
             subreddit,
             ...(await serverSideTranslations(context.locale, ['navbar', 'post_form'])),
+            locale
         }
     }
 }

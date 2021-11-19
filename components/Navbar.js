@@ -16,12 +16,14 @@ import {
   useColorModeValue,
   Stack,
   useColorMode,
-  Center
+  Center,
+  AvatarBadge
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { HamburgerIcon, CloseIcon, MoonIcon, SunIcon, AddIcon } from '@chakra-ui/icons';
 import { signIn, signOut } from 'next-auth/client';
 import { useTranslation } from "next-i18next"
+import StatusSwitch from './StatusSwitch';
 
 /**
  * @param {Object} param
@@ -109,7 +111,9 @@ export default function Navbar({ session }) {
                         <Avatar
                           size={'sm'}
                           src={session.user.image}
-                        />
+                        >
+                            <AvatarBadge boxSize="1.25em" bg="green.500"/>
+                        </Avatar>
                       </MenuButton>
                       <MenuList alignItems="center">
                             <br />
@@ -117,7 +121,9 @@ export default function Navbar({ session }) {
                                 <Avatar
                                     size={'2xl'}
                                     src={session.user.image}
-                                />
+                                >
+                                    <AvatarBadge boxSize="1.25em" bg="green.500"/>
+                                </Avatar>
                             </Center>
                             <br />
                             <Center>
@@ -126,6 +132,9 @@ export default function Navbar({ session }) {
                             <br />
                         <MenuDivider />
                         <MenuItem onClick={() => router.push('/me')}>{t('navbar:profile_link')}</MenuItem>
+                        <MenuItem>
+                            <StatusSwitch />
+                        </MenuItem>
                         <MenuItem onClick={() => signOut()}>{t('navbar:logout_link')}</MenuItem>
                       </MenuList>
                     </Menu>
