@@ -42,7 +42,10 @@ model User {
   image String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  followers Int @default(0)
+  role Role @default(USER)
   subreddits Subreddit[]
+  tickets Ticket[]
   posts Post[]
   accounts Account[]
   sessions Session[]
@@ -76,6 +79,17 @@ model Post {
   updatedAt DateTime @updatedAt
 }
 
+//SUPPORT TICKET
+model Ticket {
+  id String @id @default(cuid())
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  title String @unique
+  content String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
 model VerificationRequest {
   id String @id @default(cuid())
   identifier String
@@ -85,4 +99,9 @@ model VerificationRequest {
   updatedAt DateTime @updatedAt
   
   @@unique([identifier, token])
+}
+
+enum Role {
+  ADMIN
+  USER
 }
